@@ -4,6 +4,7 @@ const cors=require('cors');
 const dbconnect=require('./connection/conn');
 const bodyParser=require('body-parser');
 const checkToken = require('./helper/verifytoken');
+const port = process.env.PORT || 8080
 dbconnect();
 const app = express();
 const contactRoute=require('./routes/contacts')
@@ -17,6 +18,6 @@ app.use(resisterAndLogin);
 app.use('/contacts',checkToken,contactRoute);
 //app.use('/contacts',checkToken,contactDetails);
 
-app.listen(8080, () => {
+app.listen(port, () => {
   console.log("Server started on port 8080");
 });
